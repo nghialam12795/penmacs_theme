@@ -1,9 +1,9 @@
-;;; spacemacs-common.el --- Color theme with a dark and light versions.
+;;; penmacs-common.el --- Color theme with a dark and light versions.
 
 ;; Copyright (C) 2015-2018 Nasser Alshammari
 
 ;; Author: Nasser Alshammari
-;; URL: <https://github.com/nashamri/spacemacs-theme>
+;; URL: <https://github.com/nashamri/penmacs-theme>
 ;;
 ;; Version: 0.1
 ;; Keywords: color, theme
@@ -28,76 +28,76 @@
 
 ;;; Commentary:
 
-;; This is a color theme for spacemacs <https://github.com/syl20bnr/spacemacs>.
+;; This is a color theme for penmacs <https://github.com/syl20bnr/penmacs>.
 ;; It comes with two versions, dark and light and should work well in
 ;; a 256 color terminal.
 
 ;;; Code:
 
-(defgroup spacemacs-theme nil
-  "Spacemacs-theme options."
+(defgroup penmacs-theme nil
+  "Penmacs-theme options."
   :group 'faces)
 
-(defcustom spacemacs-theme-comment-bg t
+(defcustom penmacs-theme-comment-bg t
   "Use a background for comment lines."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-comment-italic nil
+(defcustom penmacs-theme-comment-italic nil
   "Enable italics for comments and also disable background."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-keyword-italic nil
+(defcustom penmacs-theme-keyword-italic nil
   "Enable italics for keywords."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-org-agenda-height nil
+(defcustom penmacs-theme-org-agenda-height nil
   "If non-nil, use varying text heights for agenda items.
 
 Note that if you change this to a non-nil value, you may want to
 also adjust the value of `org-agenda-tags-column'. If that is set
 to 'auto, tags may not be properly aligned. "
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-org-height t
+(defcustom penmacs-theme-org-height t
   "Use varying text heights for org headings."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-org-bold t
+(defcustom penmacs-theme-org-bold t
   "Inherit text bold for org headings"
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-org-priority-bold t
+(defcustom penmacs-theme-org-priority-bold t
   "Inherit text bold for priority items in agenda view"
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-org-highlight nil
+(defcustom penmacs-theme-org-highlight nil
   "Highlight org headings."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-custom-colors nil
+(defcustom penmacs-theme-custom-colors nil
   "Specify a list of custom colors."
   :type 'alist
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
-(defcustom spacemacs-theme-underline-parens t
+(defcustom penmacs-theme-underline-parens t
   "If non-nil, underline matching parens when using `show-paren-mode' or similar."
   :type 'boolean
-  :group 'spacemacs-theme)
+  :group 'penmacs-theme)
 
 (defun true-color-p ()
   (or
    (display-graphic-p)
    (= (tty-display-color-cells) 16777216)))
 
-(defun create-spacemacs-theme (variant theme-name)
+(defun create-penmacs-theme (variant theme-name)
   (let ((class '((class color) (min-colors 89))) ;;              ~~ Dark ~~                              ~~ Light ~~
         ;;                                                          GUI       TER                           GUI       TER
         ;; generic
@@ -159,10 +159,11 @@ to 'auto, tags may not be properly aligned. "
         (blue-bg       (if (eq variant 'dark) (if (true-color-p) "#293239" "#262626") (if (true-color-p) "#edf1ed" "#d7d7ff")))
         (blue-bg-s     (if (eq variant 'dark) (if (true-color-p) "#2d4252" "#262626") (if (true-color-p) "#d1dcdf" "#d7d7ff")))
         (magenta       (if (eq variant 'dark) (if (true-color-p) "#a31db1" "#af00df") (if (true-color-p) "#a31db1" "#800080")))
+        (grayout       (if (eq variant 'dark) (if (true-color-p) "#8a8a8a" "#8a8a8a") (if (true-color-p) "#8a8a8a" "#8a8a8a")))
         (yellow        (if (eq variant 'dark) (if (true-color-p) "#b1951d" "#875f00") (if (true-color-p) "#b1951d" "#875f00")))
         (yellow-bg     (if (eq variant 'dark) (if (true-color-p) "#32322c" "#262626") (if (true-color-p) "#f6f1e1" "#ffffff"))))
 
-    (cl-loop for (cvar . val) in spacemacs-theme-custom-colors
+    (cl-loop for (cvar . val) in penmacs-theme-custom-colors
              do (set cvar val))
 
     (custom-theme-set-faces
@@ -177,11 +178,11 @@ to 'auto, tags may not be properly aligned. "
      `(eval-sexp-fu-flash ((,class (:background ,suc :foreground ,bg1))))
      `(eval-sexp-fu-flash-error ((,class (:background ,err :foreground ,bg1))))
      `(font-lock-builtin-face ((,class (:foreground ,keyword))))
-     `(font-lock-comment-face ((,class (:foreground ,(if spacemacs-theme-comment-italic comment-light comment) :background ,(when spacemacs-theme-comment-bg comment-bg) :slant ,(if spacemacs-theme-comment-italic 'italic 'normal)))))
+     `(font-lock-comment-face ((,class (:foreground ,(if penmacs-theme-comment-italic comment-light comment) :background ,(when penmacs-theme-comment-bg comment-bg) :slant ,(if penmacs-theme-comment-italic 'italic 'normal)))))
      `(font-lock-constant-face ((,class (:foreground ,const))))
      `(font-lock-doc-face ((,class (:foreground ,meta))))
      `(font-lock-function-name-face ((,class (:foreground ,func :inherit bold))))
-     `(font-lock-keyword-face ((,class (:inherit bold :foreground ,keyword :slant ,(if spacemacs-theme-keyword-italic 'italic 'normal)))))
+     `(font-lock-keyword-face ((,class (:inherit bold :foreground ,keyword :slant ,(if penmacs-theme-keyword-italic 'italic 'normal)))))
      `(font-lock-negation-char-face ((,class (:foreground ,const))))
      `(font-lock-preprocessor-face ((,class (:foreground ,func))))
      `(font-lock-reference-face ((,class (:foreground ,const))))
@@ -584,7 +585,7 @@ to 'auto, tags may not be properly aligned. "
      `(ivy-minibuffer-match-face-3 ((,class (:foreground ,head4 :underline t))))
      `(ivy-minibuffer-match-face-4 ((,class (:foreground ,head3 :underline t))))
      `(ivy-remote ((,class (:foreground ,cyan))))
-     
+
 ;;;;; ivy-posframe
      `(ivy-posframe ((,class (:background ,bg3))))
 
@@ -593,12 +594,12 @@ to 'auto, tags may not be properly aligned. "
      `(font-latex-italic-face ((,class (:foreground ,keyword :italic t))))
      `(font-latex-match-reference-keywords ((,class (:foreground ,const))))
      `(font-latex-match-variable-keywords ((,class (:foreground ,var))))
-     `(font-latex-sectioning-0-face ((,class (:inherit bold :foreground ,head3 :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
-     `(font-latex-sectioning-1-face ((,class (:inherit bold :foreground ,head4 :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head4-bg)))))
-     `(font-latex-sectioning-2-face ((,class (:inherit bold :foreground ,head1 :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head1-bg)))))
-     `(font-latex-sectioning-3-face ((,class (:inherit bold :foreground ,head2 :height ,(if spacemacs-theme-org-height 1.2 1.0) :background ,(when spacemacs-theme-org-highlight head2-bg)))))
-     `(font-latex-sectioning-4-face ((,class (:bold nil :foreground ,head3 :height ,(if spacemacs-theme-org-height 1.1 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
-     `(font-latex-sectioning-5-face ((,class (:bold nil :foreground ,head4 :background ,(when spacemacs-theme-org-highlight head4-bg)))))
+     `(font-latex-sectioning-0-face ((,class (:inherit bold :foreground ,head3 :height ,(if penmacs-theme-org-height 1.3 1.0) :background ,(when penmacs-theme-org-highlight head3-bg)))))
+     `(font-latex-sectioning-1-face ((,class (:inherit bold :foreground ,head4 :height ,(if penmacs-theme-org-height 1.3 1.0) :background ,(when penmacs-theme-org-highlight head4-bg)))))
+     `(font-latex-sectioning-2-face ((,class (:inherit bold :foreground ,head1 :height ,(if penmacs-theme-org-height 1.3 1.0) :background ,(when penmacs-theme-org-highlight head1-bg)))))
+     `(font-latex-sectioning-3-face ((,class (:inherit bold :foreground ,head2 :height ,(if penmacs-theme-org-height 1.2 1.0) :background ,(when penmacs-theme-org-highlight head2-bg)))))
+     `(font-latex-sectioning-4-face ((,class (:bold nil :foreground ,head3 :height ,(if penmacs-theme-org-height 1.1 1.0) :background ,(when penmacs-theme-org-highlight head3-bg)))))
+     `(font-latex-sectioning-5-face ((,class (:bold nil :foreground ,head4 :background ,(when penmacs-theme-org-highlight head4-bg)))))
      `(font-latex-string-face ((,class (:foreground ,str))))
      `(font-latex-warning-face ((,class (:foreground ,war))))
 
@@ -668,10 +669,10 @@ to 'auto, tags may not be properly aligned. "
      `(Man-underline ((,class (:foreground ,comp :underline t))))
 
 ;;;;; markdown
-     `(markdown-header-face-1 ((,class (:inherit bold :foreground ,head1 :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head1-bg)))))
-     `(markdown-header-face-2 ((,class (:inherit bold :foreground ,head2 :height ,(if spacemacs-theme-org-height 1.2 1.0) :background ,(when spacemacs-theme-org-highlight head2-bg)))))
-     `(markdown-header-face-3 ((,class (:bold nil :foreground ,head3 :height ,(if spacemacs-theme-org-height 1.1 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
-     `(markdown-header-face-4 ((,class (:bold nil :foreground ,head4 :background ,(when spacemacs-theme-org-highlight head4-bg)))))
+     `(markdown-header-face-1 ((,class (:inherit bold :foreground ,head1 :height ,(if penmacs-theme-org-height 1.3 1.0) :background ,(when penmacs-theme-org-highlight head1-bg)))))
+     `(markdown-header-face-2 ((,class (:inherit bold :foreground ,head2 :height ,(if penmacs-theme-org-height 1.2 1.0) :background ,(when penmacs-theme-org-highlight head2-bg)))))
+     `(markdown-header-face-3 ((,class (:bold nil :foreground ,head3 :height ,(if penmacs-theme-org-height 1.1 1.0) :background ,(when penmacs-theme-org-highlight head3-bg)))))
+     `(markdown-header-face-4 ((,class (:bold nil :foreground ,head4 :background ,(when penmacs-theme-org-highlight head4-bg)))))
      `(markdown-header-face-5 ((,class (:bold nil :foreground ,head1))))
      `(markdown-header-face-6 ((,class (:bold nil :foreground ,head2))))
      `(markdown-table-face ((,class (:foreground ,base :background ,head1-bg))))
@@ -725,10 +726,10 @@ to 'auto, tags may not be properly aligned. "
 
 ;;;;; org
      `(org-agenda-clocking ((,class (:background ,highlight :foreground ,comp))))
-     `(org-agenda-date ((,class (:foreground ,var :height ,(if spacemacs-theme-org-agenda-height 1.1 1.0)))))
-     `(org-agenda-date-today ((,class (:foreground ,keyword :inherit bold :height ,(if spacemacs-theme-org-agenda-height 1.3 1.0)))))
+     `(org-agenda-date ((,class (:foreground ,var :height ,(if penmacs-theme-org-agenda-height 1.1 1.0)))))
+     `(org-agenda-date-today ((,class (:foreground ,keyword :inherit bold :height ,(if penmacs-theme-org-agenda-height 1.3 1.0)))))
      `(org-agenda-date-weekend ((,class (:inherit bold :foreground ,var))))
-     `(org-agenda-done ((,class (:foreground ,suc :height ,(if spacemacs-theme-org-agenda-height 1.2 1.0)))))
+     `(org-agenda-done ((,class (:foreground ,suc :height ,(if penmacs-theme-org-agenda-height 1.2 1.0)))))
      `(org-agenda-structure ((,class (:inherit bold :foreground ,comp))))
      `(org-block ((,class (:background ,cblk-bg :foreground ,cblk :extend t))))
      `(org-block-begin-line ((,class (:background ,cblk-ln-bg :foreground ,cblk-ln :extend t))))
@@ -740,16 +741,16 @@ to 'auto, tags may not be properly aligned. "
      `(org-date ((,class (:underline t :foreground ,var))))
      `(org-date-selected ((,class (:background ,func :foreground ,bg1))))
      `(org-document-info-keyword ((,class (:foreground ,meta))))
-     `(org-document-title ((,class (:foreground ,func :inherit bold :height ,(if spacemacs-theme-org-height 1.4 1.0) :underline t))))
+     `(org-document-title ((,class (:foreground ,func :inherit bold :height ,(if penmacs-theme-org-height 1.4 1.0) :underline t))))
      `(org-done ((,class (:foreground ,suc :inherit bold :background ,green-bg))))
      `(org-ellipsis ((,class (:foreground ,keyword))))
      `(org-footnote  ((,class (:underline t :foreground ,base))))
      `(org-hide ((,class (:foreground ,base))))
      `(org-kbd ((,class (:inherit region :foreground ,base :box (:line-width 1 :style released-button)))))
-     `(org-level-1 ((,class (:inherit bold :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :foreground ,head1 :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head1-bg)))))
-     `(org-level-2 ((,class (:inherit bold :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :foreground ,head2 :height ,(if spacemacs-theme-org-height 1.2 1.0) :background ,(when spacemacs-theme-org-highlight head2-bg)))))
-     `(org-level-3 ((,class (:bold nil :foreground ,head3 :height ,(if spacemacs-theme-org-height 1.1 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
-     `(org-level-4 ((,class (:bold nil :foreground ,head4 :background ,(when spacemacs-theme-org-highlight head4-bg)))))
+     `(org-level-1 ((,class (:inherit bold :bold ,(if penmacs-theme-org-bold 'unspecified nil) :foreground ,head1 :height ,(if penmacs-theme-org-height 1.3 1.0) :background ,(when penmacs-theme-org-highlight head1-bg)))))
+     `(org-level-2 ((,class (:inherit bold :bold ,(if penmacs-theme-org-bold 'unspecified nil) :foreground ,head2 :height ,(if penmacs-theme-org-height 1.2 1.0) :background ,(when penmacs-theme-org-highlight head2-bg)))))
+     `(org-level-3 ((,class (:bold nil :foreground ,head3 :height ,(if penmacs-theme-org-height 1.1 1.0) :background ,(when penmacs-theme-org-highlight head3-bg)))))
+     `(org-level-4 ((,class (:bold nil :foreground ,head4 :background ,(when penmacs-theme-org-highlight head4-bg)))))
      `(org-level-5 ((,class (:bold nil :foreground ,head1))))
      `(org-level-6 ((,class (:bold nil :foreground ,head2))))
      `(org-level-7 ((,class (:bold nil :foreground ,head3))))
@@ -757,10 +758,10 @@ to 'auto, tags may not be properly aligned. "
      `(org-link ((,class (:underline t :foreground ,comment))))
      `(org-meta-line ((,class (:foreground ,meta))))
      `(org-mode-line-clock-overrun ((,class (:foreground ,err))))
-     `(org-priority ((,class (:foreground ,war :inherit bold :bold ,(if spacemacs-theme-org-priority-bold 'unspecified nil)))))
+     `(org-priority ((,class (:foreground ,war :inherit bold :bold ,(if penmacs-theme-org-priority-bold 'unspecified nil)))))
      `(org-quote ((,class (:inherit org-block :slant italic))))
      `(org-scheduled ((,class (:foreground ,comp))))
-     `(org-scheduled-today ((,class (:foreground ,func :height ,(if spacemacs-theme-org-agenda-height 1.2 1.0)))))
+     `(org-scheduled-today ((,class (:foreground ,func :height ,(if penmacs-theme-org-agenda-height 1.2 1.0)))))
      `(org-scheduled-previously ((,class (:foreground ,base :slant italic))))
      `(org-sexp-date ((,class (:foreground ,base))))
      `(org-special-keyword ((,class (:foreground ,func))))
@@ -828,13 +829,13 @@ to 'auto, tags may not be properly aligned. "
      `(shm-quarantine-face ((,class (:background ,red-bg-s))))
 
 ;;;;; show-paren
-     `(show-paren-match ((,class (:foreground ,mat :inherit bold  :underline ,(when spacemacs-theme-underline-parens t)))))
+     `(show-paren-match ((,class (:foreground ,mat :inherit bold  :underline ,(when penmacs-theme-underline-parens t)))))
      `(show-paren-match-expression ((,class (:background ,green-bg-s))))
-     `(show-paren-mismatch ((,class (:foreground ,err :inherit bold :underline ,(when spacemacs-theme-underline-parens t)))))
+     `(show-paren-mismatch ((,class (:foreground ,err :inherit bold :underline ,(when penmacs-theme-underline-parens t)))))
 
 ;;;;; smartparens
      `(sp-pair-overlay-face ((,class (:background ,highlight :foreground nil))))
-     `(sp-show-pair-match-face ((,class (:foreground ,mat :inherit bold  :underline ,(when spacemacs-theme-underline-parens t)))))
+     `(sp-show-pair-match-face ((,class (:foreground ,mat :inherit bold  :underline ,(when penmacs-theme-underline-parens t)))))
 
 ;;;;; smerge
      `(smerge-base ((,class (:background ,yellow-bg :extend t))))
@@ -857,8 +858,8 @@ to 'auto, tags may not be properly aligned. "
      `(spaceline-flycheck-warning((,class (:foreground ,war))))
      `(spaceline-python-venv ((,class (:foreground ,comp))))
 
-;;;;; spacemacs-specific
-     `(spacemacs-transient-state-title-face ((,class (:background nil :foreground ,comp :box nil :inherit bold))))
+;;;;; penmacs-specific
+     `(penmacs-transient-state-title-face ((,class (:background nil :foreground ,comp :box nil :inherit bold))))
 
 ;;;;; swiper
      `(swiper-line-face ((,class (:background ,highlight :inherit bold))))
@@ -909,7 +910,7 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; treemacs
      `(treemacs-git-added-face ((,class (:foreground ,green :background ,green-bg))))
      `(treemacs-git-conflict-face ((,class (:foreground ,red :background ,red-bg))))
-     `(treemacs-git-ignored-face ((,class (:foreground ,yellow))))
+     `(treemacs-git-ignored-face ((,class (:foreground ,grayout))))
      `(treemacs-git-modified-face ((,class (:foreground ,blue :background ,blue-bg))))
      `(treemacs-git-untracked-face ((,class (:foreground ,aqua :background ,aqua-bg))))
 
@@ -1009,10 +1010,5 @@ to 'auto, tags may not be properly aligned. "
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide 'spacemacs-common)
-
-;; Local Variables:
-;; no-byte-compile: t
-;; End:
-
-;;; spacemacs-common.el ends here
+(provide 'penmacs-common)
+;;; penmacs-common.el ends here

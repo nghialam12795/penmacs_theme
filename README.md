@@ -1,30 +1,26 @@
-# Spacemacs-theme
+# Penmacs-theme (Fork from Spacemacs-theme)
 
-[![MELPA](http://melpa.org/packages/spacemacs-theme-badge.svg)](http://melpa.org/#/spacemacs-theme) ![Made with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nashamri/spacemacs-theme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![penmacs-theme](img/penmacs-theme.png)
 
-![spacemacs-theme](img/spacemacs-theme.png)
-
-Spacemacs theme is an Emacs color theme that started as a theme for [spacemacs](https://github.com/syl20bnr/spacemacs).
+Penmacs theme is an Emacs color theme that forked from spacemacs theme.
 The theme comes with dark and light variants and it should work well with 256 color terminals.
 
 ## Screenshots
 
-![spacemacs-theme-preview](img/preview.png)
+![penmacs-theme-preview](img/preview.png)
 
 ## Highlights
 
 The theme has good support for org mode.
 
-![spacemacs-theme-org](img/org.png)
+![penmacs-theme-org](img/org.png)
 
 ## Installation
 
 You can install it from MELPA by:
 
 ```
-M-x package-install RET spacemacs-theme
+M-x package-install RET penmacs-theme
 ```
 
 ## Supported modes
@@ -51,49 +47,49 @@ Some of the supported modes are:
 
 The theme has some options that can be tweaked via `M-x customize`:
 
-* `spacemacs-theme-comment-bg`:
+* `penmacs-theme-comment-bg`:
 
 This toggles a background color for the comment lines.
 
-* `spacemacs-theme-comment-italic`:
+* `penmacs-theme-comment-italic`:
 
-This toggles italics for comments and will also add a lighter color to it. It is recommended to disable `spacemacs-theme-comment-bg` if you turn this option on for better contrast.
+This toggles italics for comments and will also add a lighter color to it. It is recommended to disable `penmacs-theme-comment-bg` if you turn this option on for better contrast.
 
-* `spacemacs-theme-keyword-italic`:
+* `penmacs-theme-keyword-italic`:
 
 This toggles italics for keywords.
 
-* `spacemacs-theme-org-agenda-height`:
+* `penmacs-theme-org-agenda-height`:
 
 This toggles the use of varying org agenda heights.
 
-* `spacemacs-theme-org-bold`:
+* `penmacs-theme-org-bold`:
 
 This toggles bold text for org headings.
 
-* `spacemacs-theme-org-height`:
+* `penmacs-theme-org-height`:
 
 This toggles the use of varying org headings heights.
 
-* `spacemacs-theme-org-highlight`:
+* `penmacs-theme-org-highlight`:
 
 This toggles highlighting of org headings.
 
-* `spacemacs-theme-org-priority-bold`:
+* `penmacs-theme-org-priority-bold`:
 
 This toggles bold text for priority items in agenda view.
 
-* `spacemacs-theme-custom-colors`:
+* `penmacs-theme-custom-colors`:
 
-This allows for specifying a list of custom colors to override spacemacs theme colors. More details in the next section.
+This allows for specifying a list of custom colors to override penmacs theme colors. More details in the next section.
 
-* `spacemacs-theme-underline-parens`:
+* `penmacs-theme-underline-parens`:
 
 This toggles the underline of matching parens when using `show-paren-mode` or similar.
 
 ### Override theme's colors
 
-The theme can be customized by overriding one of the theme local variables by setting a list in the `spacemacs-theme-custom-colors` variable.
+The theme can be customized by overriding one of the theme local variables by setting a list in the `penmacs-theme-custom-colors` variable.
 Here's a list of all the local variables and roles:
 
 | var           | role                                                                                              |
@@ -114,12 +110,12 @@ Here's a list of all the local variables and roles:
 | cursor        | The cursor/point color.                                                                           |
 | const         | A constant.                                                                                       |
 | comment       | A comment.                                                                                        |
-| comment-bg    | The background color of a comment. To disable this, `customize` `spacemacs-theme-comment-bg`.     |
+| comment-bg    | The background color of a comment. To disable this, `customize` `penmacs-theme-comment-bg`.     |
 | comp          | A complementary color.                                                                            |
 | err           | errors.                                                                                           |
 | func          | functions.                                                                                        |
 | head1         | Level 1 of a heading. Used in org's headings.                                                     |
-| head1-bg      | The background of level 2 headings. To disable this, `customize` `spacemacs-theme-org-highlight`. |
+| head1-bg      | The background of level 2 headings. To disable this, `customize` `penmacs-theme-org-highlight`. |
 | head2         | Level 2 headings.                                                                                 |
 | head2-bg      | Level 2 headings background.                                                                      |
 | head3         | Level 3 headings.                                                                                 |
@@ -164,16 +160,16 @@ The `green` and `red` colors have two background versions. The `green-bg` and  `
 
 Here are some screenshots of the various variables:
 
-![spacemacs-theme-guide-generic](img/guide-generic.png)
+![penmacs-theme-guide-generic](img/guide-generic.png)
 
-![spacemacs-theme-guide-org](img/guide-org.png)
+![penmacs-theme-guide-org](img/guide-org.png)
 
-![spacemacs-theme-guide-extra](img/guide-extra.png)
+![penmacs-theme-guide-extra](img/guide-extra.png)
 
-If you are using [spacemacs](https://github.com/syl20bnr/spacemacs), you can put this snippet in your `dotspacemacs/user-init` to override these colors:
+If you are using [penmacs](https://github.com/syl20bnr/penmacs), you can put this snippet in your `dotpenmacs/user-init` to override these colors:
 
 ```elisp
-  (custom-set-variables '(spacemacs-theme-custom-colors
+  (custom-set-variables '(penmacs-theme-custom-colors
                           '((act1 . "#ff0000")
                             (act2 . "#0000ff")
                             (base . "#ffffff"))))
@@ -183,7 +179,7 @@ This will override `act1`, `act1` and `base` to use the specified colors.
 
 ### Use a custom flycheck fringe bitmap
 
-If you don't use spacemacs and want to get the same look of flycheck fringe bitmap, you can put the following snippet into your `init.el` (this assumes you are using `use-package`):
+If you don't use penmacs and want to get the same look of flycheck fringe bitmap, you can put the following snippet into your `init.el` (this assumes you are using `use-package`):
 
 ```elisp
 (use-package flycheck
