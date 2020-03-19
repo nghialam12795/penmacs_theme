@@ -1,13 +1,12 @@
 # Penmacs-theme (Fork from Spacemacs-theme)
 
-![penmacs-theme](img/penmacs-theme.png)
-
 Penmacs theme is an Emacs color theme that forked from spacemacs theme.
 The theme comes with dark and light variants and it should work well with 256 color terminals.
 
 ## Screenshots
 
-![penmacs-theme-preview](img/preview.png)
+![penmacs-theme-preview](img/penmacs-light.png)
+![penmacs-theme-preview](img/penmacs-dark.png)
 
 ## Highlights
 
